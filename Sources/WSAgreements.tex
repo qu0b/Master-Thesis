@@ -5,150 +5,92 @@
 \begin{center}
   \begin{minipage}{0.5\textwidth}
     \begin{small}
-      In which the reasons for creating this package are laid bare for the
-      whole world to see and we encounter some usage guidelines.
+      Establishing agreements typically between a provider and a consumer~\cite{andrieux2007web}.
     \end{small}
   \end{minipage}
   \vspace{0.5cm}
 \end{center}
 
-\noindent This package contains a minimal, modern template for writing your
-thesis. While originally meant to be used for a Ph.\,D.\ thesis, you can
-equally well use it for your honour thesis, bachelor thesis, and so
-on---some adjustments may be necessary, though.
+In this chapter we will look into more detail about how a provider and a consumer can come to an agreement, what information needs to be exchanged and what kind of interface is necessary to store the relevant information in the blockchain.[]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Why?}
+\section{Service Level Agreements (SLA)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-I was not satisfied with the available templates for \LaTeX{} and wanted
-to heed the style advice given by people such as Robert
-Bringhurst~\cite{Bringhurst12} or Edward R.\
-Tufte~\cite{Tufte90,Tufte01}. While there \emph{are} some packages out
-there that attempt to emulate these styles, I found them to be either
-too bloated, too playful, or too constraining. This template attempts to
-produce a beautiful look without having to resort to any sort of hacks.
-I hope you like it.
+Service level agreements are legally binding agreements about the service that is provided to a consumer. Similarly Irfan UI Haq defined it as, "A Service Level Agreement is a formal, legal contract between a service provider and a consumer that specifies, in quantifiable terms, what service level guarantees the service provider will deliver, and it defines the consequences (penalties) if the service provider fails to follow through with said commitments." \cite{TODO PHD THESISIRFAN}. To this definition there are two main parts. The first, is the commitment that there must be a definition of the commitment that the provider is willing to offer the consumer. The second, is the punishment that is due if the provider is not able to uphold his commitment. Before a SLA is binding it needs to go through a negotiation process, which will be looked at more closely in a later chapter. For now, it is enough to realize that it is an agreement between two parties over a range of attributes that a service must provide.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{How?}
+\section{Web Service Agreement Specification}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The package tries to be easy to use. If you are satisfied with the
-default settings, just add
-%
-\begin{verbatim}
-\documentclass{mimosis}
-\end{verbatim}
-%
-at the beginning of your document. This is sufficient to use the class.
-It is possible to build your document using either \LaTeX|, \XeLaTeX, or
-\LuaLaTeX. I personally prefer one of the latter two because they make
-it easier to select proper fonts.
+This specification provides templates and a semantic description of the elements in an agreement using the XML markup language. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Features}
+\subsection{JSON representation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In order to better understand the WS-Agreement Specification we wrote up a JSON representation of the example XML schema described.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}
-  \centering
-  \begin{tabular}{ll}
-    \toprule
-    \textbf{Package}      & \textbf{Purpose}\\
-    \midrule
-      \texttt{amsmath}          & Basic mathematical typography\\
-      \texttt{amsthm}           & Basic mathematical environments for proofs etc.\\
-      \texttt{booktabs}         & Typographically light rules for tables\\
-      \texttt{bookmarks}        & Bookmarks in the resulting PDF\\
-      \texttt{dsfont}           & Double-stroke font for mathematical concepts\\
-      \texttt{graphicx}         & Graphics\\
-      \texttt{hyperref}         & Hyperlinks\\
-      \texttt{multirow}         & Permits table content to span multiple rows or columns\\ 
-      \texttt{paralist}         & Paragraph~(`in-line') lists and compact enumerations\\
-      \texttt{scrlayer-scrpage} & Page headings\\
-      \texttt{setspace}         & Line spacing\\
-      \texttt{siunitx}          & Proper typesetting of units\\
-      \texttt{subcaption} & Proper sub-captions for figures\\
-    \bottomrule
-  \end{tabular}
-  \caption{%
-    A list of the most relevant packages required~(and automatically imported) by this template.
+The abstract overview of an Agreement would look like this:
+\begin{minted}{json}
+{
+  "Agreement": {
+    "id": "Unique identifier of the agreement version (increment identifier for each new version)",
+    "Name": "Optional, name of the agreement",
+    "Context": "Who is involved, what the services are and the duration.",
+    "Terms": "Terms of the agreement with one or more service definition terms and zero or more guarantee terms."
   }
-  \label{tab:Packages}
-\end{table}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+\end{minted}
 
-The template automatically imports numerous convenience packages that
-aid in your typesetting process. \autoref{tab:Packages} lists the
-most important ones. Let's briefly discuss some examples below. Please
-refer to the source code for more demonstrations.
+Looking more closely at the Context of the Agreement.
+\begin{minted}{json}
+{
+  "Context": {
+    "AgreementInitiator": "The entity that initiates the agreement",
+    "AgreementResponder": "Optional, entity that responds to the agreement creation request.",
+    "ServiceProvider": "The entity that provides the service",
+    "ExpirationTime": "The date-time when this agreement is no longer valid",
+    "TemplateId": "Required, The Id of the template this agreement was built upon",
+    "TemplateName": "Optional, The name of the template this agreement was built upon",
+    "any": "Additional values may be specified",
+  }
+}
+\end{minted}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Typesetting mathematics}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-This template uses \verb|amsmath| and \verb|amssymb|, which are the
-de-facto standard for typesetting mathematics. Use numbered equations
-using the \verb|equation| environment.
-%
-If you want to show multiple equations and align them, use the
-\verb|align| environment:
-%
-\begin{align}
-    V &:= \{ 1, 2, \dots \}\\
-    E &:= \big\{ \left(u,v\right) \mid \dist\left(p_u, p_v\right) \leq \epsilon \big\}
-\end{align}
-%
-Define new mathematical operators using \verb|\DeclareMathOperator|.
-Some operators are already pre-defined by the template, such as the
-distance between two objects. Please see the template for some examples. 
-%
-Moreover, this template contains a correct differential operator. Use \verb|\diff| to typeset the differential of integrals:
-%
-\begin{equation}
-  f(u) := \int_{v \in \domain}\dist(u,v)\diff{v}
-\end{equation}
-%
-You can see that, as a courtesy towards most mathematicians, this
-template gives you the possibility to refer to the real numbers~$\real$
-and the domain~$\domain$ of some function. Take a look at the source for
-more examples. By the way, the template comes with spacing fixes for the
-automated placement of brackets.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Typesetting text}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Along with the standard environments, this template offers
-\verb|paralist| for lists within paragraphs.
-%
-Here's a quick example: The American constitution speaks, among others, of
-%
-\begin{inparaenum}[(i)]
-  \item life
-  \item liberty
-  \item the pursuit of happiness.
-\end{inparaenum}
-%
-These should be added in equal measure to your own conduct. To typeset
-units correctly, use the \verb|siunitx| package. For example, you might
-want to restrict your daily intake of liberty to \SI{750}{\milli\gram}.
-
-Likewise, as a small pet peeve of mine, I offer specific operators for \emph{ordinals}. Use \verb|\th| to typeset things like July~4\th correctly. Or, if you are referring to the 2\nd edition of a book, please use \verb|\nd|. Likewise, if you came in 3\rd in a marathon, use \verb|\rd|. This is my 1\st rule.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Changing things}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Since this class heavily relies on the \verb|scrbook| class, you can use
-\emph{their} styling commands in order to change the look of things. For
-example, if you want to change the text in sections to \textbf{bold} you
-can just use
-%
-\begin{verbatim}
-  \setkomafont{sectioning}{\normalfont\bfseries}
-\end{verbatim}
-%
-at the end of the document preamble---you don't have to modify the class
-file for this. Please consult the source code for more information.
+Lastly the Agreement consists of multiple terms
+\begin{minted}{json}
+{
+  "Terms": {
+    "Service": {
+      "DescriptionTerm": {
+        "Name": "local name",
+        "ServiceName": "global name",
+        "description": "Additional values to describe the service"
+      }
+      "Reference": {
+        "Name": "local name",
+        "ServiceName": "global name",
+        "reference": ""
+      }
+      "Properties": {
+        "Name": "local name",
+        "ServiceName": "global name",
+        "Variables": [{
+          "Name": "Gas",
+          "Metric": "barrels" ,
+          "Location": "reference e.g. XPATH",
+        }]
+      }
+    },
+    "Guarantee": {
+      "Name": "specify promises and penalties",
+      "Obligated": "",
+      "ServiceScope": {
+        "Name": "",
+        "Value": "",
+      }
+      "QualifyingCondition": "",
+      "ServiceLevelObjective": "",
+      "BusinessValueList": ""
+    }
+  }
+}
+\end{minted}
