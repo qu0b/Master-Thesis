@@ -1,0 +1,73 @@
+\documentclass[a4paper, 	
+	11pt, 		
+	oneside,	 % alternativ twoside, falls doppelseitiger Ausdruck erwünscht ist
+	cleardoublepage=empty,
+	parskip=half,
+	headings=normal,
+	numbers=noenddot,
+	listof=totoc,
+	bibliography=totoc, 	
+	appendixprefix,
+	headsepline, 
+	footsepline=false,	
+	titlepage	
+	]{scrbook}
+
+% Bitte beachten: In den folgenden Umgebungen müssen Umlaute in der Form
+% {\"A}, {\"a}, {\"o} usw. eingegeben werden.
+\renewcommand{\title}{A Blockchain Enabled WS Agreements Framework}
+\newcommand{\betreuer}{Dr. Erich Schikuta, Dipl.-Ing. Benedikt Pittl}
+\renewcommand{\author}{Stefan Starflinger BSc}
+\newcommand{\matrikelnummer}{1209919}
+\newcommand{\strasse}{Glatzgasse. 4}
+\newcommand{\plz}{1190}
+\newcommand{\ort}{Wien}
+\newcommand{\email}{a1209919@unet.univie.ac.at}
+
+\input{chapters/preamble.tex}
+
+\begin{document}
+\pagenumbering{Roman}
+
+% Titelseite. 
+% Für Seminararbeiten die chapters titlepage-seminar.tex verwenden. 
+% Für Bachelorarbeiten die chapters titlepage-bachelor.tex verwenden. 
+% Für Masterarbeiten die chapters titlepage-master.tex verwenden. 
+\input{chapters/titlepage-master.tex} 
+
+\frontmatter
+
+\onehalfspacing
+\setcounter{tocdepth}{2}
+
+\input{chapters/Thesis/Abstract.tex}
+
+% Inhaltsverzeichnis
+\tableofcontents
+
+% Tabellenverzeichnis
+\listoftables
+
+% Abbildungsverzeichnis
+\listoffigures
+
+\mainmatter
+
+% Hauptteil der Arbeit
+\input{chapters/Thesis/Introduction.tex}
+\input{chapters/Thesis/Blockchain.tex}
+\input{chapters/Thesis/WSAgreements.tex}
+\input{chapters/Thesis/Negotiation.tex}
+\input{chapters/Thesis/Contracts.tex}
+
+
+\backmatter
+
+\bibliographystyle{natdin}
+\bibliography{literature}
+
+
+
+\input{chapters/versicherung.tex}
+
+\end {document}

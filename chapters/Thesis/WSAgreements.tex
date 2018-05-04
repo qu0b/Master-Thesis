@@ -1,0 +1,97 @@
+% !TEX root = ../Thesis.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Web Service Agreements}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+  \begin{minipage}{0.5\textwidth}
+    \begin{small}
+      Establishing agreements typically between a provider and a consumer~\cite{andrieux2007web}.
+    \end{small}
+  \end{minipage}
+  \vspace{0.5cm}
+\end{center}
+
+In this chapter we will look into more detail about how a provider and a consumer can come to an agreement, what information needs to be exchanged and what kind of interface is necessary to store the relevant information in the blockchain.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Service Level Agreements (SLA)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Service level agreements are legally binding agreements about the service that is provided to a consumer. Similarly Irfan UI Haq defined it as, "A Service Level Agreement is a formal, legal contract between a service provider and a consumer that specifies, in quantifiable terms, what service level guarantees the service provider will deliver, and it defines the consequences (penalties) if the service provider fails to follow through with said commitments." \cite{TODO PHD THESISIRFAN}. To this definition there are two main parts. The first, is that the extent of the commitment that the provider is willing to offer to the consumer must be clearly laid out. The second, is the punishment that is due if the provider is not able to uphold his commitment. Before a SLA is binding it needs to go through a negotiation process, which will be looked at more closely in a later chapter. For now, it is enough to realize that it is an agreement between two parties over a range of attributes that a service must provide.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Web Service Agreement Specification}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This specification provides templates and a semantic description of the elements in an agreement using the XML markup language. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{JSON representation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In order to better understand the WS-Agreement Specification we wrote up a JSON representation of the example XML schema described.
+
+The abstract overview of an Agreement would look like this:
+\begin{minted}{json}
+{
+  "Agreement": {
+    "id": "Unique identifier of the agreement version (increment identifier for each new version)",
+    "Name": "Optional, name of the agreement",
+    "Context": "Who is involved, what the services are and the duration.",
+    "Terms": "Terms of the agreement with one or more service definition terms and zero or more guarantee terms."
+  }
+}
+\end{minted}
+
+Looking more closely at the Context of the Agreement.
+\begin{minted}{json}
+{
+  "Context": {
+    "AgreementInitiator": "The entity that initiates the agreement",
+    "AgreementResponder": "Optional, entity that responds to the agreement creation request.",
+    "ServiceProvider": "The entity that provides the service",
+    "ExpirationTime": "The date-time when this agreement is no longer valid",
+    "TemplateId": "Required, The Id of the template this agreement was built upon",
+    "TemplateName": "Optional, The name of the template this agreement was built upon",
+    "any": "Additional values may be specified",
+  }
+}
+\end{minted}
+
+Lastly the Agreement consists of multiple terms
+\begin{minted}{json}
+{
+  "Terms": {
+    "Service": {
+      "DescriptionTerm": {
+        "Name": "local name",
+        "ServiceName": "global name",
+        "description": "Additional values to describe the service"
+      }
+      "Reference": {
+        "Name": "local name",
+        "ServiceName": "global name",
+        "reference": ""
+      }
+      "Properties": {
+        "Name": "local name",
+        "ServiceName": "global name",
+        "Variables": [{
+          "Name": "Gas",
+          "Metric": "barrels" ,
+          "Location": "reference e.g. XPATH",
+        }]
+      }
+    },
+    "Guarantee": {
+      "Name": "specify promises and penalties",
+      "Obligated": "",
+      "ServiceScope": {
+        "Name": "",
+        "Value": "",
+      }
+      "QualifyingCondition": "",
+      "ServiceLevelObjective": "",
+      "BusinessValueList": ""
+    }
+  }
+}
+\end{minted}

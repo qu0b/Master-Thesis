@@ -1,0 +1,58 @@
+% !TEX root = ../Thesis.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+They way businesses obtain computer resources has changed, from being a capital investment to being an operating expense. Advancements in distributed computing and cloud computing have made it possible for providers such as Amazon, to offer their computing resources to the world. Cloud services are especially interesting for small businesses that do not have the capital or resources, for which cloud providers offer a safe environment, to develop and launch a product. The paper \cite{smallbusiness} argues that cloud computing is economically viable, and small business gain an edge over their competition if they use cloud computing resources intelligently. Further, many cloud providers offer generous free tiers, that lure businesses in.
+
+For businesses that are indifferent on where the hardware is that their services run on, and only care about the specifications of the hardware. Getting the desired resources can be cumbersome. Most of the IaaS cloud market is an assortment of pre-built instances from which a customer can choose, with minimum customization options. Further, the service level agreements are also more of a take it, or leave it option. Cloud providers market power and vendor lock-in \cite{lock-in} gives them near monopoly power. Customers have little to no negotiation power, leaving them alienated. A market place is necessary where consumers can define their needs and where cloud providers compete for customers, encouraging standardization. Moreover, it would shift the surplus away from the cloud providers inducing healthy competition.
+
+Ideas for such a market place, were providers compete for customers, does not currently exist, but there are approaches that go in that direction. An example, is Amazon's spot market, where spare resources are available at a discounted rate \cite{amazon_spot}. The spot market 
+
+In \cite{utility_negotiation} the current state of the cloud business model is discussed. Especially, focusing on Infrastructure as a Service (Iaas). It states that IaaS providers cannot meet the dynamic requirements, demand and expectation of its customers.  
+
+<talk about autonomous>
+
+The agreement between providers and consumers rely on trust
+
+<something about peer-to-peer and trustless>
+
+
+<talk about the marketplace>
+
+\section{Cloud Computing}
+
+In recent years cloud computing has sprung up to be a viable business model that offers companies immense scalability \cite{bookOnCloud}, rapid prototyping \cite{prototyping}, as well as a whole list of other on demand resources. 
+
+Many believe that computing resources are a utility such as water, gas or electricity. Rappa \cite{utilitycomputing} argues this case, saying that computing resources will be just as necessary as electricity in the future. Although, cloud providers such as Amazon do more than just offer Infrastructure as a service (IaaS)  
+
+why stop there. Purchasing or rather renting computing resources from cloud providers is more or less a take it or leave it deal. For most businesses, especially small businesses, there is little or no leverage. Not only do consumers blindly accept the service level agreements.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{what is Blockchain}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Why do we need a Blockchain}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Previously, trust between the provider and consumer was necessary to autonomously negotiate service level agreements. With the Blockchain the negotiation process and the final agreement can be recorded without the need for trust.
+
+It would be incredibly expensive to store all of the data that is produced during negotiation in the Blockchain. That is why, a different approach needs to be considered. The possibility that we look at in this paper, is storing only the hash of the individual messages in the Blockchain, which means that in every negotiation round a fixed amount of data is created. Further, the contents can be stored peer-to-peer by using \cite{ipfs}. Storing the files peer-to-peer using InterPlanetary File System (IPFS) where the hash is stored in the smart contract, means that the file is publicly accessible. With cryptography an encrypted version can be stored if privacy is desired \cite{kamara2010cryptographic}. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Similar systems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Comparing different agreement specifications}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The value this paper provides}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Using ipfs \cite{ipfs} we can store the templates and the final agreement.
+
+the client should
+* save the hash of the ipfs file in the contract
+* check if the file confirms with the schema / validate the file

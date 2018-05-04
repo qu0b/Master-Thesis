@@ -1,0 +1,54 @@
+\usepackage{scrlayer-scrpage}
+%\usepackage[latin1]{inputenc} % Eingabekodierungen
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{bibgerm}
+\usepackage[authoryear,square]{natbib}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{lmodern}
+
+\typearea{12}
+
+\usepackage[pagebackref,	% Rückreferenz im Literaturverzeichnis
+	breaklinks=true,	
+	colorlinks=true,	
+	citecolor=black,	
+	linkcolor=black,	
+	urlcolor=black,	
+	extension=pdf,		
+	ngerman]{hyperref}
+\hypersetup{		
+	pdfview=FitV,
+	pdfstartview=FitV,		
+	bookmarksnumbered=true, 	
+	pdfauthor={\author},	
+	pdftitle={\title}	
+}	
+
+% Fußnoten durchgehend numerieren
+\usepackage{remreset}
+\makeatletter
+\@removefromreset{footnote}{chapter}
+\makeatother
+
+\deffootnote[1em]{1em}{1em}{\textsuperscript{\thefootnotemark}\,} 
+
+% Rückreferenzentext zur Literatur
+\renewcommand*{\backreftwosep}{ and~}
+\renewcommand*{\backreflastsep}{ and~}
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{%
+\ifcase #1 %
+ (not cited).%
+\or
+ (cited on page~#2).%
+\else
+ (cited on pages~#2).%
+\fi
+}
+
+\tolerance=5000
