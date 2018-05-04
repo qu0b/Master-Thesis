@@ -11,23 +11,29 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Motivation
 % * why
-Negotiating Service Level Agreements (SLA) is a key part in acquiring cloud resources. Although many cloud providers do not 
+Cloud computing has proven to be economically viable and is one of the major advancements in the field of distributed computing. It has become a utility putting it in the same category as water and electricity \cite{buyya2009cloud}. Currently, most cloud services are obtained from a single cloud provider. The lack of standardization makes it difficult to switch between cloud providers, also known as vendor lock-in. A critical examination of the vendor lock-in \cite{vendorlockin} came to the conclusion, that proprietary software built by providers makes it difficult for companies to switch. Fortunately, with the right planning most of the downsides of vendor lock-in can be mitigated. Another issue that the proprietary software and lack of standardization presents, is that a market cannot be formed. In a sense, a lack of market liquidity is instigated. With a standard, providers cloud offer their services at a cloud market where their resources usage would be optimized through market forces \cite{autonomous-agent, Dastjerdi2015AnAT}.
 
+% * SLA (add something about the survay)
 
-Internet of Things (IoT) devices have very limited hardware and can benefit greatly from obtaining compute capacity. The distributed nature and sheer quantity of IoT devices makes it impractical for humans to negotiate SLA's on behalf of devices, especially when requirements are constantly changing. As stated \cite{autonomous-agent} there is a need a for an autonomous negotiation framework. 
+% * Negotiation 
+Negotiating Service Level Agreements (SLA) is a key part in acquiring cloud resources. Unfortunately, many cloud providers do not offer customers any room to negotiate. This comes at the cost, for both the provider and the consumer. Resources are left idle, that consumers cannot afford while providers still have to pay for their operating expenses. The paper \cite{Dastjerdi2015AnAT} argues, that to improve the overall cloud market utility, providers need to adopt standards to optimize resource utilization, negotiate autonomously, and benefit from market forces.
 
-It shows, that it is not only hard to find an algorithm to negotiate on one's behalf, but it is also hard to find a provider whom you can trust.
+% * Autonomous Negotiation
+Devices with limited hardware such as Internet of Things (IoT) devices can benefit greatly from obtaining compute capacity. The distributed nature and sheer quantity of IoT devices makes it impractical for humans to negotiate SLAs on behalf of the devices, especially in a dynamic environment. As stated in \cite{autonomous-agent} there is a need a for an autonomous negotiation framework. The paper also states that it is hard to find an algorithm, which negotiates on one's behalf especially because it is so to define, and implement the goals of a consumer.
+
 % * trust
-Using the Ethereum Blockchain, we make it possible to enforce autonomously negotiated SLA. This is done by storing the multi-round negotiation process.
-% * Autonomous
-% * IoT - has limited resources
-% * Negotiation
+Trust is a immeasurable necessity when humans make decisions; negotiation algorithms cannot rely on trust. A means of negotiating trustless is needed, which can be obtained through integrating the Blockchain technology into the negotiation process. The Blockchain technology was developed in the wake of the 2008 financial crisis \cite{nakamoto2008bitcoin}. Today, it could help shape the future of a border-less financial world. It eradicates the need for a trusted third party, instead we lay our trust in a public protocol. The Blockchain protocol combines a reward system with a consensus algorithm in a novel way, which keeps the system secure and stable. As an example, a bad actor would earn more money if he helped secure the system than if he tried to attack it.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{State of the Art}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+There are two fields, that we are considering in this paper. On the one hand, we compare different SLA frameworks, on the other we try to figure out what Blockchain is best suited four our use case. There are a few different SLA frameworks more notable though, is the WS Agreement   
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % How is it currently done & technologies used.
@@ -57,6 +63,7 @@ Using the Ethereum Blockchain, we make it possible to enforce autonomously negot
 % Deployment Diagram of the technology that will be used
 % * ipfs
 % * ethereum
+Using the Ethereum Blockchain , we make it possible to enforce autonomously negotiated SLA. This is done by storing the multi-round negotiation process in the Blockchain. 
 % * hardware
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
